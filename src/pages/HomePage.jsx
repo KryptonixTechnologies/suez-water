@@ -1,0 +1,13 @@
+import { Link } from 'react-router-dom'
+import { MdArrowForward, MdCheckCircle } from 'react-icons/md'
+import { products } from '../data/products'
+import ProductGrid from '../components/products/ProductGrid'
+import HeroSlider from '../components/home/HeroSlider'
+import SolutionsSlider from '../components/home/SolutionsSlider'
+export default function HomePage(){const featured=[...products.filter(p=>p.family==='Reverse Osmosis Systems').slice(0,4),...products.filter(p=>p.family==='Complete Systems & Tanks').slice(0,4)];return <>
+ <section className="hero-section"><div className="hero-copy"><span className="eyebrow">Clean water. Smart energy.</span><h1>Better water.<br/><em>Brighter living.</em></h1><p>Dependable water treatment and solar water heating solutions for Kenyan homes, businesses and institutions.</p><div className="hero-actions"><Link className="primary" to="/products">Explore products <MdArrowForward/></Link><Link className="text-link" to="/contact">Talk to an expert</Link></div><div className="trust-row">{['Expert guidance','Quality equipment','Nationwide support'].map(x=><span key={x}><MdCheckCircle/>{x}</span>)}</div></div><div className="hero-visual"><HeroSlider/></div></section>
+ <section className="intro-section"><span className="section-kicker">Our solutions</span><div className="section-heading"><h2>One trusted partner.<br/>Two areas of expertise.</h2><p>From safer drinking water to lower energy costs, we help you choose a solution that fits.</p></div><SolutionsSlider/></section>
+ <section className="home-featured"><div className="section-heading"><div><span className="section-kicker">Featured products</span><h2>Popular starting points.</h2></div><Link className="text-link" to="/products">View full catalog <MdArrowForward/></Link></div><ProductGrid products={featured}/></section>
+ <section className="process-section"><span className="section-kicker light">How it works</span><h2>From selection to solution.</h2><div className="process-grid">{[['01','Browse','Explore products grouped by the work they do.'],['02','Build your cart','Add systems, spares or consumables in any quantity.'],['03','Talk to our team','Send your list on WhatsApp for pricing and guidance.'],['04','Get it done','Confirm supply, delivery and installation with our team.']].map(x=><article key={x[0]}><b>{x[0]}</b><h3>{x[1]}</h3><p>{x[2]}</p></article>)}</div></section>
+ <section className="cta-band"><div><span className="section-kicker">Need expert input?</span><h2>Let’s plan the right system.</h2></div><Link className="primary" to="/contact">Start a conversation <MdArrowForward/></Link></section>
+ </>}

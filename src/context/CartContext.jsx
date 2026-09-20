@@ -1,0 +1,7 @@
+import { useEffect, useMemo, useReducer } from 'react'
+import Swal from 'sweetalert2'
+import { CartContext } from './cart-store'
+const initialState={items:{}}
+function reducer(state,action){const items={...state.items};if(action.type==='ADD')items[action.id]=(items[action.id]||0)+(action.quantity||1);if(action.type==='SET')action.quantity>0?items[action.id]=action.quantity:delete items[action.id];if(action.type==='REMOVE')delete items[action.id];if(action.type==='CLEAR')return initialState;return{items}}
+function storedState(){try{return{items:JSON.parse(localStorage.getItem('suez-cart'))||{}}}catch{return initialState}}
+export function CartProvider({children}){const[state,dispatch]=useReducer(reducer,initialState,storedState);useEffect(()=>localStorage.setItem('suez-cart',JSON.stringify(state.items)),[state.items]);const value=useMemo(()=>({items:state.items,count:Object.values(state.items).reduce((sum,q)=>sum+q,0),addItem(product,quantity=1){dispatch({type:'ADD',id:product.id,quantity});Swal.fire({toast:true,position:'bottom',icon:'success',title:'Added to your cart',text:product.name,showConfirmButton:false,timer:1800,timerProgressBar:true})},setQuantity:(id,quantity)=>dispatch({type:'SET',id,quantity}),removeItem:id=>dispatch({type:'REMOVE',id}),clearCart:()=>dispatch({type:'CLEAR'})}),[state.items]);return <CartContext.Provider value={value}>{children}</CartContext.Provider>}
