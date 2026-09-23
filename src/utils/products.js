@@ -1,4 +1,16 @@
 export const niceName = (name) => name.toLowerCase().replace(/\b\w/g, (letter) => letter.toUpperCase()).replace(/\b(Ro|Uv|Gpd|Tds|Frp|Pp|Mpv)\b/g, (value) => value.toUpperCase())
+
+export const productSlug = (name) => name
+  .normalize('NFKD')
+  .toLowerCase()
+  .replace(/½/g, ' half ')
+  .replace(/¾/g, ' three-quarter ')
+  .replace(/¼/g, ' quarter ')
+  .replace(/[^a-z0-9]+/g, '-')
+  .replace(/^-|-$/g, '')
+
+export const productPath = (product) => `/products/${productSlug(product.name)}`
+
 export const familyDescriptions = {
   'Reverse Osmosis Systems':'Reliable purification systems for homes, businesses and larger installations.','Filter Housings':'Durable housings designed for dependable, serviceable filtration.','Filter Cartridges':'Replacement cartridges for sediment, carbon and specialist filtration.',Membranes:'RO and ultrafiltration membranes for efficient contaminant removal.','Treatment Chemicals':'Professional water care and system maintenance solutions.','Filter Media':'Selected media for softening, clarification and contaminant reduction.','UV Sterilization':'UV components for chemical-free water disinfection systems.','Pumps & Controls':'Pumps, switches and controls for consistent system performance.','Taps & Testing':'Dispensing taps and test tools for everyday water quality checks.','Tanks & Valves':'Treatment vessels and valves for complete filtration assemblies.','Fittings & Accessories':'Connectors, valves and installation essentials for water systems.','Water Treatment Accessories':'Practical components for water treatment and maintenance.','Complete Systems & Tanks':'Solar hot-water systems and tanks for homes and institutions.','Heating Elements':'Replacement heating elements for reliable backup heating.','Controllers & Sensors':'Smart control and sensing components for solar installations.','Solar Spares':'Core replacement parts for solar water-heating systems.','Fittings & Seals':'Seals, connectors and fittings made for secure installations.','Solar Accessories':'Supporting parts for installation, servicing and repairs.'
 }

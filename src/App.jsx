@@ -11,5 +11,5 @@ import NotFoundPage from './pages/NotFoundPage'
 import './App.css'
 
 export default function App() {
-  return <Routes><Route element={<Layout />}><Route index element={<HomePage />} /><Route path="products" element={<ProductsPage />} /><Route path="products/:productId" element={<ProductDetailsPage />} /><Route path="about" element={<AboutPage />} /><Route path="projects" element={<ProjectsPage />} /><Route path="contact" element={<ContactPage />} /><Route path="cart" element={<CartPage />} /><Route path="*" element={<NotFoundPage />} /></Route></Routes>
+  return <Routes><Route element={<Layout />}><Route index element={<HomePage />} /><Route path="products" element={<ProductsPage />} /><Route path="products/:productSlug" element={<ProductDetailsPage />} /><Route path="about" element={<AboutPage />} /><Route path="projects" element={<ProjectsPage />} /><Route path="contact" element={<ContactPage />} /><Route path="cart" element={<CartPage />} /><Route path="*" element={<NotFoundPage />} /></Route></Routes>
 }

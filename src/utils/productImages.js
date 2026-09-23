@@ -75,6 +75,8 @@ Object.entries(imageModules).forEach(([path, url]) => {
 // using its exact catalog name.
 const aliases = {
   [normalize('MAGNICIUM ROD ½ BRASS')]: normalize('Brass Round bar solid brass rod in diamaters 1_8_, 5mm, 6mm, 8mm, 10mm, 12mm, 16mm, 18mm, 20mm, 25mm, 30mm, 38mm, 50mm and all lengths cz121 brass rod'),
+  [normalize('SENSOR PORCKET')]: normalize('Sensor Pocket'),
+  [normalize('LOW PRESSURE SWITCH 1/4')]: normalize('Low Pressure Switch 14'),
 }
 
 export function getProductImage(product) {

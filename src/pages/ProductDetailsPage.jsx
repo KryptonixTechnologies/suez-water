@@ -1,17 +1,17 @@
 import { useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, Navigate, useParams } from 'react-router-dom'
 import { MdAdd, MdArrowBack, MdCheckCircle, MdRemove } from 'react-icons/md'
 import { FaWhatsapp } from 'react-icons/fa'
 import { products } from '../data/products'
-import { whatsappUrl } from '../config/site'
+import { productUrl, whatsappUrl } from '../config/site'
 import { useCart } from '../context/cart-store'
-import { familyDescriptions, niceName } from '../utils/products'
+import { familyDescriptions, niceName, productPath, productSlug } from '../utils/products'
 import { getProductImage } from '../utils/productImages'
 import ProductGrid from '../components/products/ProductGrid'
 
 export default function ProductDetailsPage() {
-  const { productId } = useParams()
-  const product = products.find((item) => item.id === productId)
+  const { productSlug: routeSlug } = useParams()
+  const product = products.find((item) => productSlug(item.name) === routeSlug || item.id === routeSlug)
   const [quantity, setQuantity] = useState(1)
   const { addItem } = useCart()
 
@@ -19,9 +19,26 @@ export default function ProductDetailsPage() {
     return <section className="not-found"><h1>Product not found</h1><Link to="/products">Return to products</Link></section>
   }
 
+  if (routeSlug !== productSlug(product.name)) {
+    return <Navigate to={productPath(product)} replace/>
+  }
+
   const productName = niceName(product.name)
   const related = products.filter((item) => item.family === product.family && item.id !== product.id).slice(0, 4)
-  const buyMessage = `Hi Suez Water, I'd like to buy ${quantity} x ${productName} (Item ${product.id}). Please let me know the price and availability.`
+  const buyMessage = [
+    'Hello Suez Water & Energy Technologies,',
+    '',
+    'I am interested in purchasing the following product:',
+    '',
+    `*Product:* ${productName}`,
+    `*Item code:* #${product.id}`,
+    `*Quantity:* ${quantity}`,
+    `*Product link:* ${productUrl(product)}`,
+    '',
+    'Please confirm its availability, price, delivery options, and any other information I should know.',
+    '',
+    'Thank you.',
+  ].join('\n')
 
   return <>
     <section className="product-detail">

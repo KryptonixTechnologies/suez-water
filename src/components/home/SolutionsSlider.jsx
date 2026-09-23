@@ -22,7 +22,7 @@ export default function SolutionsSlider() {
 
   return <div className="solutions-slider">
     <article className={`solution-slide ${solution.id}`} key={solution.id}>
-      <div className="solution-slide-image"><img src={solution.image} alt={`${solution.title} solutions`}/></div>
+      <div className="solution-slide-image"><img src={solution.image} alt={`${solution.title} solutions`} loading="lazy" decoding="async" width="900" height="560"/></div>
       <div className="solution-slide-copy">
         <span className="solution-index">0{active + 1}</span>
         <small>{solution.count} products</small>
@@ -32,7 +32,7 @@ export default function SolutionsSlider() {
       </div>
     </article>
     <div className="solutions-controls">
-      <div>{solutions.map((item, index) => <button key={item.id} className={active === index ? 'active' : ''} onClick={() => setActive(index)}><span>{item.title}</span></button>)}</div>
+      <div>{solutions.map((item, index) => <button key={item.id} className={active === index ? 'active' : ''} onClick={() => setActive(index)} aria-label={`Show ${item.title}`} aria-pressed={active === index}><span>{item.title}</span></button>)}</div>
       <aside><button onClick={() => change(-1)} aria-label="Previous solution"><MdArrowBack/></button><button onClick={() => change(1)} aria-label="Next solution"><MdArrowForward/></button></aside>
     </div>
   </div>

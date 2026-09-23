@@ -23,7 +23,7 @@ export default function HeroSlider() {
 
   return <div className="hero-slider" aria-roledescription="carousel" aria-label="Water treatment and solar solutions">
     <div className="hero-slide" key={slide.id}>
-      <img src={slide.image} alt={slide.alt}/>
+      <img src={slide.image} alt={slide.alt} width="736" height="552" fetchPriority={active === 0 ? 'high' : 'auto'} decoding="async"/>
     </div>
     <div className="hero-slider-controls">
       <div className="hero-slider-dots">{slides.map((item, index) => <button key={item.id} className={index === active ? 'active' : ''} onClick={() => setActive(index)} aria-label={`Show image ${index + 1}`}/>)}</div>
