@@ -5,7 +5,7 @@ import solarProductsImage from '../../assets/Solar Products/Solar System product
 import waterProductsImage from '../../assets/Water treatment Products/Domestic Water treatment products Catalogue.png'
 
 const solutions = [
-  { id: 'water', title: 'Water Treatment', count: 226, image: waterProductsImage, category: 'Water Treatment', text: 'Filtration, purification, testing and every component needed to keep clean water flowing for homes, businesses and institutions.' },
+  { id: 'water', title: 'Water Treatment', count: 225, image: waterProductsImage, category: 'Water Treatment', text: 'Filtration, purification, testing and every component needed to keep clean water flowing for homes, businesses and institutions.' },
   { id: 'solar', title: 'Solar Water Heaters', count: 64, image: solarProductsImage, category: 'Solar Water Heaters', text: 'Complete systems, tanks and service parts that turn abundant sunshine into dependable hot water and everyday savings.' },
 ]
 

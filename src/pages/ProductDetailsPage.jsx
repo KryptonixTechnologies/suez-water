@@ -5,8 +5,9 @@ import { FaWhatsapp } from 'react-icons/fa'
 import { products } from '../data/products'
 import { productUrl, whatsappUrl } from '../config/site'
 import { useCart } from '../context/cart-store'
-import { familyDescriptions, niceName, productPath, productSlug } from '../utils/products'
+import { niceName, productPath, productSlug } from '../utils/products'
 import { getProductImage } from '../utils/productImages'
+import { getProductDetails } from '../utils/productDetails'
 import ProductGrid from '../components/products/ProductGrid'
 
 export default function ProductDetailsPage() {
@@ -24,6 +25,7 @@ export default function ProductDetailsPage() {
   }
 
   const productName = niceName(product.name)
+  const details = getProductDetails(product)
   const related = products.filter((item) => item.family === product.family && item.id !== product.id).slice(0, 4)
   const buyMessage = [
     'Hello Suez Water & Energy Technologies,',
@@ -50,8 +52,10 @@ export default function ProductDetailsPage() {
         <span className="section-kicker">{product.category}</span>
         <small>{product.family} · Item #{product.id}</small>
         <h1>{productName}</h1>
-        <p>{familyDescriptions[product.family]} Our team can confirm compatibility, current availability, project sizing and recommended supporting components.</p>
-        <ul>{['Professional product guidance', 'Suitable for tailored project quotations', 'Delivery and installation support available'].map((item) => <li key={item}><MdCheckCircle/>{item}</li>)}</ul>
+        <p>{details.summary}</p>
+        <dl className="detail-specs">{details.specs.map(({ label, value }, index) => <div key={`${label}-${index}`}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
+        {details.caution && <p className="detail-caution">{details.caution}</p>}
+        <ul>{details.benefits.map((item) => <li key={item}><MdCheckCircle/>{item}</li>)}</ul>
         <div className="detail-purchase">
           <div className="quantity">
             <button onClick={() => setQuantity((current) => Math.max(1, current - 1))} aria-label="Decrease quantity"><MdRemove/></button>

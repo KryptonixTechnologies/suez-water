@@ -25,12 +25,6 @@ export const products = [
     "family": "Filter Housings"
   },
   {
-    "id": "1005",
-    "name": "RO BODY WHITE RO 10 “",
-    "category": "Water Treatment",
-    "family": "Water Treatment Accessories"
-  },
-  {
     "id": "1006",
     "name": "BLOCK CARBON 10”",
     "category": "Water Treatment",
@@ -98,7 +92,7 @@ export const products = [
   },
   {
     "id": "1017",
-    "name": "PP SEDIMENT SPAN 10” 10 MIC",
+    "name": "PP SEDIMENT SPUN 10” 10 MIC",
     "category": "Water Treatment",
     "family": "Filter Cartridges"
   },
@@ -302,7 +296,7 @@ export const products = [
   },
   {
     "id": "1051",
-    "name": "PP SEDIMENT WOUND 20” 20 MC",
+    "name": "PP SEDIMENT WOUND 20” 20 MIC",
     "category": "Water Treatment",
     "family": "Filter Cartridges"
   },
@@ -386,13 +380,13 @@ export const products = [
   },
   {
     "id": "1065",
-    "name": "WARSHABLE CARTRIGE 10”",
+    "name": "WASHABLE CARTRIDGE 10”",
     "category": "Water Treatment",
     "family": "Filter Cartridges"
   },
   {
     "id": "1066",
-    "name": "WARSHABLE CARTRIGE 20”",
+    "name": "WASHABLE CARTRIDGE 20”",
     "category": "Water Treatment",
     "family": "Filter Cartridges"
   },
@@ -578,7 +572,7 @@ export const products = [
   },
   {
     "id": "1097",
-    "name": "BIO DIESTER 5L",
+    "name": "BIO DIGESTER 5L",
     "category": "Water Treatment",
     "family": "Water Treatment Accessories"
   },
@@ -638,7 +632,7 @@ export const products = [
   },
   {
     "id": "1107",
-    "name": "FRT TANK 1252",
+    "name": "FRP TANK 1252",
     "category": "Water Treatment",
     "family": "Tanks & Valves"
   },
@@ -692,7 +686,7 @@ export const products = [
   },
   {
     "id": "1116",
-    "name": "FILETR BODY 10” CLEAR TRIPPLE",
+    "name": "FILTER BODY 10” CLEAR TRIPLE",
     "category": "Water Treatment",
     "family": "Water Treatment Accessories"
   },
@@ -1358,43 +1352,43 @@ export const products = [
   },
   {
     "id": "1227",
-    "name": "MAGNICIUM ROD ½ BRASS",
+    "name": "MAGNESIUM ROD ½ BRASS",
     "category": "Solar Water Heaters",
     "family": "Solar Spares"
   },
   {
     "id": "1228",
-    "name": "MAGNICIUM ROD ½ GREEN",
+    "name": "MAGNESIUM ROD ½ GREEN",
     "category": "Solar Water Heaters",
     "family": "Solar Spares"
   },
   {
     "id": "1229",
-    "name": "MAGNISIUM ROD ¾ 7SS",
+    "name": "MAGNESIUM ROD ¾ 7SS",
     "category": "Solar Water Heaters",
     "family": "Solar Spares"
   },
   {
     "id": "1230",
-    "name": "MAGNISIUN ROD 3/4",
+    "name": "MAGNESIUM ROD 3/4",
     "category": "Solar Water Heaters",
     "family": "Solar Spares"
   },
   {
     "id": "1231",
-    "name": "MAGNISIUM ROD 1”",
+    "name": "MAGNESIUM ROD 1”",
     "category": "Solar Water Heaters",
     "family": "Solar Spares"
   },
   {
     "id": "1232",
-    "name": "MAGNISIUM ROD 1 1/4",
+    "name": "MAGNESIUM ROD 1 1/4",
     "category": "Solar Water Heaters",
     "family": "Solar Spares"
   },
   {
     "id": "1233",
-    "name": "SENSOR PORCKET",
+    "name": "SENSOR POCKET",
     "category": "Solar Water Heaters",
     "family": "Controllers & Sensors"
   },
@@ -1418,7 +1412,7 @@ export const products = [
   },
   {
     "id": "1237",
-    "name": "HEATING ELEMENT WITH THERMOSTART",
+    "name": "HEATING ELEMENT WITH THERMOSTAT",
     "category": "Solar Water Heaters",
     "family": "Heating Elements"
   },
@@ -1615,26 +1609,14 @@ export const products = [
     "family": "Complete Systems & Tanks"
   },
   {
-    "id": "1270",
-    "name": "SOLAR WATER HEATER TUBES 200L H.P",
-    "category": "Solar Water Heaters",
-    "family": "Complete Systems & Tanks"
-  },
-  {
     "id": "1271",
     "name": "SOLAR WATER HEATER TUBES 300L L.P",
     "category": "Solar Water Heaters",
     "family": "Complete Systems & Tanks"
   },
   {
-    "id": "1272",
-    "name": "SOLAR WATER HEATER TUBES 200L L.P",
-    "category": "Solar Water Heaters",
-    "family": "Complete Systems & Tanks"
-  },
-  {
     "id": "1273",
-    "name": "FLATE PLATE",
+    "name": "FLAT PLATE",
     "category": "Solar Water Heaters",
     "family": "Solar Accessories"
   },
@@ -1676,13 +1658,13 @@ export const products = [
   },
   {
     "id": "1280",
-    "name": "FLATE PLATE TANK 300L",
+    "name": "FLAT PLATE TANK 300L",
     "category": "Solar Water Heaters",
     "family": "Complete Systems & Tanks"
   },
   {
     "id": "1281",
-    "name": "FLATE PLATE TANK 200L",
+    "name": "FLAT PLATE TANK 200L",
     "category": "Solar Water Heaters",
     "family": "Complete Systems & Tanks"
   },

@@ -13,7 +13,6 @@ export default function ProductCard({ product }) {
       <span className="view-product">View details <MdOpenInNew/></span>
     </Link>
     <div className="product-info">
-      <small>Item #{product.id} · {product.family}</small>
       <h3><Link to={productPath(product)}>{productName}</Link></h3>
       <p>{familyDescriptions[product.family]}</p>
       <div className="product-actions">
