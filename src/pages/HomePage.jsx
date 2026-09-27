@@ -4,7 +4,21 @@ import { products } from '../data/products'
 import ProductGrid from '../components/products/ProductGrid'
 import HeroSlider from '../components/home/HeroSlider'
 import SolutionsSlider from '../components/home/SolutionsSlider'
-export default function HomePage(){const featured=[...products.filter(p=>p.family==='Reverse Osmosis Systems').slice(0,4),...products.filter(p=>p.family==='Complete Systems & Tanks').slice(0,4)];return <>
+export default function HomePage(){
+ const fromFamily=(family,count)=>products.filter(p=>p.family===family).slice(0,count)
+ const [reverseOsmosis,solarSystems,chemicals,cartridges,pumps]=[
+  fromFamily('Reverse Osmosis Systems',2),
+  fromFamily('Complete Systems & Tanks',2),
+  fromFamily('Treatment Chemicals',3),
+  fromFamily('Filter Cartridges',3),
+  fromFamily('Pumps & Controls',2),
+ ]
+ const featured=[
+  reverseOsmosis[0],solarSystems[0],chemicals[0],cartridges[0],
+  pumps[0],chemicals[1],cartridges[1],solarSystems[1],
+  reverseOsmosis[1],pumps[1],chemicals[2],cartridges[2],
+ ].filter(Boolean)
+ return <>
  <section className="hero-section"><div className="hero-copy"><span className="eyebrow">Clean water. Smart energy.</span><h1>Better water.<br/><em>Brighter living.</em></h1><p>Dependable water treatment and solar water heating solutions for Kenyan homes, businesses and institutions.</p><div className="hero-actions"><Link className="primary" to="/products">Explore products <MdArrowForward/></Link><Link className="text-link" to="/contact">Talk to an expert</Link></div><div className="trust-row">{['Expert guidance','Quality equipment','Nationwide support'].map(x=><span key={x}><MdCheckCircle/>{x}</span>)}</div></div><div className="hero-visual"><HeroSlider/></div></section>
  <section className="intro-section"><span className="section-kicker">Our solutions</span><div className="section-heading"><h2>One trusted partner.<br/>Two areas of expertise.</h2><p>From safer drinking water to lower energy costs, we help you choose a solution that fits.</p></div><SolutionsSlider/></section>
  <section className="home-featured"><div className="section-heading"><div><span className="section-kicker">Featured products</span><h2>Popular starting points.</h2></div><Link className="text-link" to="/products">View full catalog <MdArrowForward/></Link></div><ProductGrid products={featured}/></section>

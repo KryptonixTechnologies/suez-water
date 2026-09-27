@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { MdArrowForward, MdEco, MdHandshake } from 'react-icons/md'
 import PageHero from '../components/layout/PageHero'
-import { SITE } from '../config/site'
+import aboutTeamImage from '../assets/about-water-solar-team.png'
 
 export default function AboutPage() {
   return <>
@@ -20,7 +20,7 @@ export default function AboutPage() {
         <p>From design to installation and maintenance, we power your success while building a greener future.</p>
         <Link className="text-link" to="/contact">Talk to our team <MdArrowForward/></Link>
       </div>
-      <img src={SITE.productImage} alt="Suez Water and Energy Technologies solutions"/>
+      <img src={aboutTeamImage} alt="Water-treatment engineers inspecting a sustainable solar-powered installation"/>
     </section>
 
     <section className="mission-section about-purpose">

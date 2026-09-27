@@ -74,6 +74,20 @@ Object.entries(imageModules).forEach(([path, url]) => {
 // This supplied filename describes the brass magnesium rod product rather than
 // using its exact catalog name.
 const aliases = {
+  // Use the newly supplied product-family images for every available pack size.
+  [normalize('CHLORINE 65 45KG')]: normalize('chlorine 65'),
+  [normalize('CHLORINE 65 5KG')]: normalize('chlorine 65'),
+  [normalize('CHLORINE 65 1KG')]: normalize('chlorine 65'),
+  [normalize('CHLORINE 65 500G')]: normalize('chlorine 65'),
+  [normalize('CAUSTIC SODA 1KG')]: normalize('Caustic Soda'),
+  [normalize('CITRIC ACID 1KG')]: normalize('citric acid'),
+  [normalize('FLOCCULANT 50KG')]: normalize('floculant'),
+  [normalize('FLOCCULANT 20KG')]: normalize('floculant'),
+  [normalize('FLOCCULANT 5KG')]: normalize('floculant'),
+  [normalize('FLOCCULANT 1KG')]: normalize('floculant'),
+  [normalize('FLOCCULANT 500 G')]: normalize('floculant'),
+  [normalize('GLYCO 20L RED')]: normalize('solar hot Water Heater Fluid'),
+  [normalize('GLYCO 5L RED')]: normalize('solar hot Water Heater Fluid'),
   // Preserve supplied images after correcting spelling in the public catalog.
   [normalize('PP SEDIMENT SPUN 10” 10 MIC')]: normalize('PP SEDIMENT SPAN 10” 10 MIC'),
   [normalize('PP SEDIMENT WOUND 20” 20 MIC')]: normalize('PP Sediment Wound 20” 20 Mc'),

@@ -155,3 +155,50 @@
 @media(max-width:1050px){.products-catalog-layout{grid-template-columns:225px minmax(0,1fr);gap:24px}}
 @media(max-width:760px){.product-filters{padding:0}.filter-group{padding:17px 15px}.filter-group+.filter-group{padding-top:17px}.filter-group h2{margin-left:2px}.product-filters .family-row{max-height:none;overflow-x:auto;overflow-y:hidden;padding-right:0}.product-filters .tabs button,.product-filters .family-row button{padding:8px 10px 8px 12px}.product-filters .tabs button:hover,.product-filters .family-row button:hover{transform:none}.product-filters .tabs button.active,.product-filters .family-row button.active{box-shadow:inset 0 -3px #0470C1}}
 .product-filters .tabs button.active,.product-filters .family-row button.active{box-shadow:none}
+
+/* Company contact information in the site footer. */
+.site-footer{grid-template-columns:1.05fr 1.4fr .55fr;gap:55px 70px;padding-top:64px}
+.site-footer .footer-intro{display:block}
+.footer-intro p{max-width:310px;margin:20px 0 0;color:#B8C9E1;font-size:14px;line-height:1.75}
+.site-footer h2{margin:0 0 20px;color:#fff;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+.site-footer .footer-contact{display:block}
+.footer-contact address{font-style:normal}
+.footer-contact-row{display:grid;grid-template-columns:38px 1fr;align-items:center;gap:12px;margin:0 0 14px}
+.footer-contact-row i{width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:#0470C1;color:#fff;font-size:20px}
+.footer-contact-row span,.footer-contact-row span>a{display:block;color:#fff;font-size:13px;line-height:1.4;text-decoration:none}
+.footer-contact-row span>a:hover{text-decoration:underline;text-underline-offset:4px}
+.footer-contact-row span>small{display:block;margin-bottom:2px;color:#8FA8C8;font-size:8px;letter-spacing:.1em;text-transform:uppercase}
+.site-footer .footer-links{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:13px}
+.site-footer .footer-links h2{margin-bottom:7px}
+.site-footer .footer-links a{color:#B8C9E1;font-size:13px;font-weight:600;text-decoration:none}
+.site-footer .footer-links a:hover{color:#fff}
+.site-footer .footer-copyright{grid-column:1/-1;border-top:1px solid #ffffff1c;padding-top:24px;margin-top:5px;color:#8FA8C8;font-size:10px}
+@media(max-width:900px){.site-footer{grid-template-columns:1fr 1fr}.site-footer .footer-links{grid-column:1/-1}}
+@media(max-width:600px){.site-footer{grid-template-columns:1fr;gap:38px}.site-footer .footer-links{grid-column:auto}.footer-contact-row span,.footer-contact-row span>a{font-size:12px}}
+.contact-cards a{color:inherit;text-decoration:none}.contact-cards a:hover strong{color:#0470C1;text-decoration:underline;text-underline-offset:4px}
+
+/* Sticky yellow company contact bar above the main navigation. */
+.site-header-stack{position:sticky;top:0;z-index:1000}
+.header-contact-bar{height:38px;padding:0 max(24px,calc((100vw - 1240px)/2));display:flex;align-items:center;background:#FCC305;color:#061E44;border-bottom:1px solid #e4ad00}
+.header-contact-bar>div{width:100%;display:flex;align-items:center;justify-content:flex-end;gap:28px}
+.header-contact-bar a,.header-contact-bar .header-location{display:inline-flex;align-items:center;gap:7px;color:#061E44;text-decoration:none;font-size:12px;font-weight:700;white-space:nowrap}
+.header-contact-bar a:hover{text-decoration:underline;text-underline-offset:3px}
+.header-contact-bar svg{font-size:17px;flex:none}
+.site-header-stack .site-header{position:relative;top:auto;z-index:1}
+.product-filters{top:156px}
+@media(max-width:900px){.header-contact-bar>div{justify-content:center;gap:18px}.header-contact-bar a,.header-contact-bar .header-location{font-size:11px}}
+@media(max-width:700px){.header-contact-bar{height:36px;padding:0 14px;overflow:hidden}.header-contact-bar>div{justify-content:flex-start;gap:18px;overflow-x:auto;scrollbar-width:none}.header-contact-bar>div::-webkit-scrollbar{display:none}.header-contact-bar a,.header-contact-bar .header-location{font-size:10px}.site-header-stack .nav{top:100%}}
+
+.callback-trigger{min-height:28px;padding:0 12px;border:1px solid #061E44;border-radius:5px;background:#061E44;color:#fff;display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;white-space:nowrap}.callback-trigger:hover{background:#0470C1;border-color:#0470C1}.callback-trigger svg{font-size:15px}
+.callback-overlay{position:fixed;inset:0;z-index:2000;padding:20px;display:grid;place-items:center;background:#061e4480;backdrop-filter:blur(5px)}
+.callback-dialog{position:relative;width:min(440px,100%);padding:38px;background:#fff;border-radius:18px;box-shadow:0 28px 80px #061e4452;color:#061E44}
+.callback-close{position:absolute;right:16px;top:16px;width:38px;height:38px;border:0;border-radius:50%;display:grid;place-items:center;background:#EAF6FD;color:#061E44;font-size:21px}.callback-close:hover{background:#D5EDFC}
+.callback-icon{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#FCC305;color:#061E44;font-size:25px;margin-bottom:20px}
+.callback-dialog>small{color:#0470C1;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.callback-dialog h2{margin:8px 0 10px;font-size:30px;line-height:1.15}.callback-dialog>p{margin:0 0 24px;color:#526A88;font-size:14px;line-height:1.65}
+.callback-dialog form label{display:block;margin-bottom:8px;color:#061E44;font-size:12px;font-weight:700}.callback-dialog form input[type=tel]{width:100%;height:52px;padding:0 15px;border:1px solid #CFE7F7;border-radius:8px;background:#F7FBFF;color:#061E44;font-size:16px;outline:0}.callback-dialog form input[type=tel]:focus{border-color:#0470C1;box-shadow:0 0 0 3px #54BBF72b;background:#fff}
+.callback-dialog form button[type=submit]{width:100%;min-height:52px;margin-top:14px;border:0;border-radius:8px;background:#0470C1;color:#fff;display:flex;align-items:center;justify-content:center;gap:9px;font-size:14px;font-weight:700}.callback-dialog form button[type=submit]:hover{background:#062D7F}.callback-dialog form button[type=submit]:disabled{opacity:.65;cursor:wait}
+.callback-botcheck{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.callback-status{margin-top:13px;padding:10px 12px;border-radius:7px;font-size:12px;line-height:1.5}.callback-status.success{background:#E8F8EE;color:#17633A}.callback-status.error{background:#FFF2E5;color:#8A4415}
+.callback-dialog .callback-privacy{display:block;margin-top:15px;color:#71869E;font-size:9px;font-weight:500;letter-spacing:0;text-transform:none;line-height:1.5}
+@media(max-width:700px){.callback-trigger{position:sticky;right:0}.callback-dialog{padding:32px 24px}.callback-dialog h2{font-size:26px}}
