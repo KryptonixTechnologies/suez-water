@@ -67,7 +67,8 @@ export default function ProductsPage() {
         <div className="catalog-toolbar">
           <div>
             <span>Product catalogue</span>
-            <strong id="catalog-results" aria-live="polite">{filtered.length} {filtered.length === 1 ? 'product' : 'products'}</strong>
+            <h1>Water Treatment &amp; Solar Products in Kenya</h1>
+            <strong id="catalog-results" aria-live="polite">{filtered.length} {filtered.length === 1 ? 'product' : 'products'} available</strong>
           </div>
           <label className="search">
             <span className="sr-only">Search products or item names</span>

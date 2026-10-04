@@ -75,21 +75,16 @@ Object.entries(imageModules).forEach(([path, url]) => {
 // using its exact catalog name.
 const aliases = {
   // Use the newly supplied product-family images for every available pack size.
-  [normalize('CHLORINE 65 45KG')]: normalize('chlorine 65'),
   [normalize('CHLORINE 65 5KG')]: normalize('chlorine 65'),
   [normalize('CHLORINE 65 1KG')]: normalize('chlorine 65'),
   [normalize('CHLORINE 65 500G')]: normalize('chlorine 65'),
   [normalize('CAUSTIC SODA 1KG')]: normalize('Caustic Soda'),
   [normalize('CITRIC ACID 1KG')]: normalize('citric acid'),
-  [normalize('FLOCCULANT 50KG')]: normalize('floculant'),
-  [normalize('FLOCCULANT 20KG')]: normalize('floculant'),
   [normalize('FLOCCULANT 5KG')]: normalize('floculant'),
   [normalize('FLOCCULANT 1KG')]: normalize('floculant'),
   [normalize('FLOCCULANT 500 G')]: normalize('floculant'),
-  [normalize('GLYCO 20L RED')]: normalize('solar hot Water Heater Fluid'),
   [normalize('GLYCO 5L RED')]: normalize('solar hot Water Heater Fluid'),
   // Preserve supplied images after correcting spelling in the public catalog.
-  [normalize('PP SEDIMENT SPUN 10” 10 MIC')]: normalize('PP SEDIMENT SPAN 10” 10 MIC'),
   [normalize('PP SEDIMENT WOUND 20” 20 MIC')]: normalize('PP Sediment Wound 20” 20 Mc'),
   [normalize('WASHABLE CARTRIDGE 10”')]: normalize('Warshable Cartrige 10”'),
   [normalize('WASHABLE CARTRIDGE 20”')]: normalize('Warshable Cartrige 20”'),
@@ -105,19 +100,13 @@ const aliases = {
   [normalize('HANGING PLATE 20”')]: normalize('hanging plate 20'),
   [normalize('HANGING PLATE JUMBO 20”')]: normalize('hanging plate 20'),
   [normalize('MAGNESIUM ROD ½ BRASS')]: normalize('Brass Round bar solid brass rod in diamaters 1_8_, 5mm, 6mm, 8mm, 10mm, 12mm, 16mm, 18mm, 20mm, 25mm, 30mm, 38mm, 50mm and all lengths cz121 brass rod'),
-  [normalize('MAGNESIUM ROD ½ GREEN')]: normalize('MAGNICIUM ROD ½ GREEN'),
-  [normalize('MAGNESIUM ROD ¾ 7SS')]: normalize('MAGNISIUM ROD ¾ 7SS'),
   [normalize('MAGNESIUM ROD 3/4')]: normalize('Magnisiun Rod'),
   [normalize('MAGNESIUM ROD 1”')]: normalize('MAGNISIUM ROD 1”'),
   [normalize('MAGNESIUM ROD 1 1/4')]: normalize('Magnisium Rod 1 1'),
   [normalize('SENSOR POCKET')]: normalize('Sensor Pocket'),
   [normalize('HEATING ELEMENT ¾')]: normalize('Heating Elemnt ¾'),
-  [normalize('HEATING ELEMENT WITH THERMOSTAT')]: normalize('Heating Element With Thermostart'),
   [normalize('GLYCOL 20L RED')]: normalize('Glyco 20l Red'),
   [normalize('GLYCOL 5L RED')]: normalize('GLYCO 20L RED'),
-  [normalize('FLAT PLATE')]: normalize('FLATE PLATE TANK 300L'),
-  [normalize('FLAT PLATE TANK 300L')]: normalize('FLATE PLATE TANK 300L'),
-  [normalize('FLAT PLATE TANK 200L')]: normalize('Solar Water Heater Flat Plate 200l'),
   [normalize('MAGNICIUM ROD ½ BRASS')]: normalize('Brass Round bar solid brass rod in diamaters 1_8_, 5mm, 6mm, 8mm, 10mm, 12mm, 16mm, 18mm, 20mm, 25mm, 30mm, 38mm, 50mm and all lengths cz121 brass rod'),
   [normalize('SENSOR PORCKET')]: normalize('Sensor Pocket'),
   [normalize('LOW PRESSURE SWITCH 1/4')]: normalize('Low Pressure Switch 14'),
@@ -125,7 +114,6 @@ const aliases = {
   [normalize('ACTIVATED CARBON INBUILT')]: normalize('Activated carbon'),
   [normalize('SAND MEDIA CLASS B')]: normalize('Sand media grade B'),
   [normalize('SAND MEDIA CLASS C')]: normalize('Sand media grade c'),
-  [normalize('PUMP ADAPTOR 800 GPD')]: normalize('Pump Adaptors 400 GPD'),
   [normalize('BALL VALVE { TANK VALVE} PIPE ¼ THREAD 1/4')]: normalize('Ball Valve Tank Valve'),
   [normalize('BALL VALVE {TANK VALVE} PIPE 3/8 THREAD 1/4')]: normalize('Ball Valve'),
   [normalize('HAND VALVE PIPE ¼ BY 1/4')]: normalize('Hand Valve Pipe'),
@@ -140,19 +128,75 @@ const aliases = {
   [normalize('INLTET VALVE PIPE 3/8 BY ½ BY 1/2 METALIC')]: normalize('Inlet Valve Pipe 14 By 12 By 12 Metalic'),
   [normalize('BLUE HOUSING HUNGING PLATE 10“')]: normalize('vblue house hanging plate'),
   [normalize('HUNGING PLATE 20”')]: normalize('hanging plate 20'),
-  [normalize('HUNGING PLATE JUMBO 20”')]: normalize('hanging plate 20'),
-  [normalize('HEATING ELEMENT 48MM(IMMERSION)')]: normalize('immersed hearter'),
   [normalize('RUBBERS/WASHER 47MM')]: normalize('Rubbersr 47mm'),
   [normalize('RUBBERS / WASHER BLACK 58 MM')]: normalize('Rubbers Black 58 Mm'),
-  [normalize('FLATE PLATE')]: normalize('FLATE PLATE TANK 300L'),
-  [normalize('SOLAR TUBE TANK 300L H/P')]: normalize('Solar Tube Tank 300l'),
   [normalize('SOLAR TUBE TANK 300L L/P')]: normalize('Solar Tube Tank 300l'),
-  [normalize('SOLAR TUBE TANK 200L L/P')]: normalize('Solar Tube Tank 200l'),
+}
+
+// Prefer current supplier photographs over superseded legacy assets. Family
+// photographs are reused when catalogue products differ only by measurement.
+const supplierReplacement = (key) => {
+  if (key === normalize('REVERSE OSMOSIS SYSTEM 100 GPD')) return normalize('100GPD under sink water purifier')
+  if (key === normalize('REVERSE OSMOSIS SYSTEM 125 L /H')) return normalize('125l per h Reverse osmosis machine')
+  if (/^reverseosmosissystem(250|500|750|1000)lh$/.test(key)) return normalize('1000lh Reverse osmosis machine')
+  if (/^membrane(100gpd2012|inbult100gpd)$/.test(key)) return normalize('100GPD Ro membrane')
+  if (/^membrane(300gpd|400gpd3013)$/.test(key)) return normalize('300-600 RO GPD')
+  if (/^(frotec|aquavista)membrane4040$/.test(key) || key === normalize('MEMBRANE 4040 FIBRE BODY')) return normalize('Ro 4040 membrane')
+  if (key === normalize('RO PUMP MINI 100 GPD')) return normalize('100GPD Diaphragm booster pump')
+  if (/^ropump(400|800)gpd$/.test(key)) return normalize('400G booster pump')
+  if (key === normalize('PUMP ADAPTORS 100GPD')) return normalize('100GPD pump adapter')
+  if (/^pumpadaptor(s400|800)gpd$/.test(key)) return normalize('Pump adapter')
+
+  const housings = {
+    [normalize('FILTER BODY JUMBO 20”')]: 'Jumbo filter housing 20 inch',
+    [normalize('FILTER BODY 10” CLEAR')]: 'Filter body 10 inch',
+    [normalize('FILTER BODY 10” CLEAR DOUBLE')]: 'Double filter 10 inch',
+    [normalize('FILTER BODY 10” CLEAR TRIPLE')]: 'Triple filter 10 inch',
+    [normalize('FILTER BODY 10” CLEAR RO')]: 'Reverse osmosis system housing',
+  }
+  if (housings[key]) return normalize(housings[key])
+  if (key === normalize('BLOCK CARBON 20”')) return normalize('Block carbon 20 inch')
+  if (/^ppsedimentspun(10|20)/.test(key) && key.endsWith('jumbo')) return normalize('10 and 20 inch Jumbo pp sediment filter')
+  if (/^ppsedimentspun10/.test(key)) return normalize('10 inch pp sediment filter')
+  if (/^ppsedimentspun20/.test(key)) return normalize('Pp sediment 20 inch')
+  if (/^ppsedimentwound10/.test(key)) return normalize('Wound pp filter 10 inch')
+
+  const exact = {
+    [normalize('SALT TABLET 10KG')]: 'Water softener salt tablets',
+    [normalize('CARBON MEDIA 25KG')]: 'Carbon media',
+    [normalize('FRP TANK 1054')]: '1054 FRP tank',
+    [normalize('CHLORINE 65 1KG')]: '1kg chlorine 65',
+    [normalize('CAUSTIC SODA 1KG')]: '1kg caustic soda',
+    [normalize('CITRIC ACID 1KG')]: '1kg citric acid',
+    [normalize('ANTISCALANT 20L')]: '20ltrs antiscalant',
+    [normalize('FAUCET TAP GOLD')]: 'Gold star Ro faucet taps',
+    [normalize('FAUCET TAP STANDARD')]: 'Standard faucet taps',
+    [normalize('FAUCET TAP STAR')]: 'Star Ro faucet',
+    [normalize('FAUCET MIXER TAP')]: 'Standard Ro mixer taps',
+    [normalize('SR609 CONTROLLER')]: 'Sr6o9c controller',
+  }
+  if (exact[key]) return normalize(exact[key])
+  if (key === normalize('AUTOMATIC MPV SOFTERNER')) return normalize('Automatic water softening valve')
+  if (key === normalize('MANUAL MPV SOFTENER')) return normalize('Softener mpv valve')
+  if (/^magnesiumrod/.test(key)) return normalize('Threads magnesium rods 12"&34"')
+  if (/^assistanttank/.test(key)) return normalize('Solar water heater assistant tank')
+  if (key === 'flatplate' || key.startsWith('flatplatetank') || key.startsWith('solarwaterheaterflatplate')) return normalize('Flat plate solar water heater 200l and 300l')
+  if ([
+    normalize('HEATING ELEMNT ¾'), normalize('HEATING ELEMENT 1”'),
+    normalize('HEATING ELEMENT 1 1/4'), normalize('HEATING ELEMENT ¾ STICK'),
+  ].includes(key)) return normalize('Heating elements 3-4 inch, 1 inch and 1-1-4 inch')
+  if ([normalize('HEATING ELEMENT 7SS 2KW'), normalize('HEATING ELEMENT 7SS 1.5 KW')].includes(key)) {
+    return normalize('Heating elements 1.5kw and 2kw')
+  }
+  if (/^flextube/.test(key)) return normalize('Stainless steel solar flex tubes')
+  return null
 }
 
 export function getProductImage(product) {
   const key = normalize(product.name)
-  const exactImage = imagesByName.get(key) || imagesByName.get(aliases[key])
+  const exactImage = imagesByName.get(supplierReplacement(key))
+    || imagesByName.get(aliases[key])
+    || imagesByName.get(key)
   if (exactImage) return exactImage
 
   const candidates = imagesBySeries.get(seriesKey(product.name))

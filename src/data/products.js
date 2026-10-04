@@ -1,5 +1,5 @@
 // Generated from suez water.xlsx — keep product names and item codes in sync with the source workbook.
-export const products = [
+const catalogProducts = [
   {
     "id": "1001",
     "name": "FILTER BODY JUMBO 20”",
@@ -43,32 +43,8 @@ export const products = [
     "family": "Filter Cartridges"
   },
   {
-    "id": "1009",
-    "name": "BLOCK CARBON JUMBO 20”",
-    "category": "Water Treatment",
-    "family": "Filter Cartridges"
-  },
-  {
-    "id": "1010",
-    "name": "GRANULAR CARBON 10”",
-    "category": "Water Treatment",
-    "family": "Filter Cartridges"
-  },
-  {
     "id": "1011",
     "name": "GRANULAR CARBON JUMBO 10”",
-    "category": "Water Treatment",
-    "family": "Filter Cartridges"
-  },
-  {
-    "id": "1012",
-    "name": "GRANULAR CARBON 20”",
-    "category": "Water Treatment",
-    "family": "Filter Cartridges"
-  },
-  {
-    "id": "1013",
-    "name": "GRANULAR CARBON JUMBO 20”",
     "category": "Water Treatment",
     "family": "Filter Cartridges"
   },
@@ -79,44 +55,8 @@ export const products = [
     "family": "Filter Cartridges"
   },
   {
-    "id": "1015",
-    "name": "PP SEDIMENT SPUN 10” 1 MIC",
-    "category": "Water Treatment",
-    "family": "Filter Cartridges"
-  },
-  {
-    "id": "1016",
-    "name": "PP SEDIMENT SPUN 10” 5 MIC",
-    "category": "Water Treatment",
-    "family": "Filter Cartridges"
-  },
-  {
-    "id": "1017",
-    "name": "PP SEDIMENT SPUN 10” 10 MIC",
-    "category": "Water Treatment",
-    "family": "Filter Cartridges"
-  },
-  {
-    "id": "1018",
-    "name": "PP SEDIMENT SPUN 10” 20 MIC",
-    "category": "Water Treatment",
-    "family": "Filter Cartridges"
-  },
-  {
-    "id": "1019",
-    "name": "PP SEDIMENT SPUN 10” 0.5 MIC JUMBO",
-    "category": "Water Treatment",
-    "family": "Filter Cartridges"
-  },
-  {
     "id": "1020",
     "name": "PP SEDIMENT SPUN 10” 1 MIC JUMBO",
-    "category": "Water Treatment",
-    "family": "Filter Cartridges"
-  },
-  {
-    "id": "1021",
-    "name": "PP SEDIMENT SPUN 10” 5 MIC JUMBO",
     "category": "Water Treatment",
     "family": "Filter Cartridges"
   },
@@ -133,20 +73,8 @@ export const products = [
     "family": "Filter Cartridges"
   },
   {
-    "id": "1024",
-    "name": "PP SEDIMENT SPUN 20” 0.5 MIC",
-    "category": "Water Treatment",
-    "family": "Filter Cartridges"
-  },
-  {
     "id": "1025",
     "name": "PP SEDIMENT SPUN 20 “ 1 MIC",
-    "category": "Water Treatment",
-    "family": "Filter Cartridges"
-  },
-  {
-    "id": "1026",
-    "name": "PP SEDIMENT SPUN 20” 5 MIC",
     "category": "Water Treatment",
     "family": "Filter Cartridges"
   },
@@ -473,18 +401,6 @@ export const products = [
     "name": "DMI MEDIA",
     "category": "Water Treatment",
     "family": "Filter Media"
-  },
-  {
-    "id": "1081",
-    "name": "CHLORINE 90 20 KG",
-    "category": "Water Treatment",
-    "family": "Treatment Chemicals"
-  },
-  {
-    "id": "1082",
-    "name": "CHLORINE 65 45KG",
-    "category": "Water Treatment",
-    "family": "Treatment Chemicals"
   },
   {
     "id": "1083",
@@ -1621,24 +1537,6 @@ export const products = [
     "family": "Solar Accessories"
   },
   {
-    "id": "1274",
-    "name": "SOLAR WATER HEATER FLAT PLATE 300L",
-    "category": "Solar Water Heaters",
-    "family": "Complete Systems & Tanks"
-  },
-  {
-    "id": "1275",
-    "name": "SOLAR WATER HEATER FLAT PLATE 200L",
-    "category": "Solar Water Heaters",
-    "family": "Complete Systems & Tanks"
-  },
-  {
-    "id": "1276",
-    "name": "SOLAR TUBE TANK 300L H/P",
-    "category": "Solar Water Heaters",
-    "family": "Complete Systems & Tanks"
-  },
-  {
     "id": "1277",
     "name": "SOLAR TUBE TANK 200L H/P",
     "category": "Solar Water Heaters",
@@ -1647,24 +1545,6 @@ export const products = [
   {
     "id": "1278",
     "name": "SOLAR TUBE TANK 300L L/P",
-    "category": "Solar Water Heaters",
-    "family": "Complete Systems & Tanks"
-  },
-  {
-    "id": "1279",
-    "name": "SOLAR TUBE TANK 200L L/P",
-    "category": "Solar Water Heaters",
-    "family": "Complete Systems & Tanks"
-  },
-  {
-    "id": "1280",
-    "name": "FLAT PLATE TANK 300L",
-    "category": "Solar Water Heaters",
-    "family": "Complete Systems & Tanks"
-  },
-  {
-    "id": "1281",
-    "name": "FLAT PLATE TANK 200L",
     "category": "Solar Water Heaters",
     "family": "Complete Systems & Tanks"
   },
@@ -1723,3 +1603,165 @@ export const products = [
     "family": "Solar Spares"
   }
 ]
+
+// The supplier now sells UV equipment as four consolidated product families
+// rather than separate sleeves, wattages, pin variants, and adapters.
+const retiredUvProductIds = new Set(
+  Array.from({ length: 35 }, (_, index) => String(1118 + index)),
+)
+
+// Some catalogue variants differ only by their final size/capacity label and
+// intentionally share one product photo. Keep at most three visible choices
+// from each of those repeated-photo groups so the catalogue is not flooded
+// with visually identical cards.
+const hiddenRepeatedImageVariants = new Set([
+  '1022', '1023', '1029', '1030', '1031', '1032', '1033',
+  '1027', '1028',
+  '1039',
+  '1045', '1046',
+  '1092', '1093',
+  '1175',
+  '1230', '1231', '1232',
+  '1238',
+])
+
+const retiredProductNames = new Set([
+  'HEATING ELEMENT 1 1/4',
+  'HEATING ELEMENT WITH THERMOSTAT',
+  'HEATING ELEMENT 48MM(IMMERSION)',
+  'HEATING ELEMENT 7SS 1.5 KW',
+  'AQUAVISTA MEMBRANE 4040',
+  'RO PUMP 800 GPD',
+  'PUMP ADAPTOR 800 GPD',
+  'REVERSE OSMOSIS SYSTEM 500 L/H',
+  'REVERSE OSMOSIS SYSTEM 750 L/H',
+  'GLYCO 20L RED',
+  'ASSISTANT TANK STAINLESS STEEL',
+  'FRP TANK 917',
+  'SUPER CLOGMASTER 1KG',
+  'FLOCCULANT 50KG',
+  'FLOCCULANT 20KG',
+  'MAGNESIUM ROD ½ GREEN',
+  'MAGNESIUM ROD ¾ 7SS',
+  'M8 CONTROLLER',
+  'PP SEDIMENT WOUND 10” 1 MIC',
+  'PP SEDIMENT WOUND 10” 5 MIC',
+  'FAUCET FILTER',
+  'CERAMIC SWS FILTER',
+  'MALE ELBOW PIPE ¼ THREAD 3/8',
+  'MALE ELBOW PIPE 3/8 THREAD 1/2',
+  'WASTE WATER RATIO FLOW 650 CC',
+  'WASTE WATER RATIO FLOW 800 CC',
+  'HUNGING PLATE JUMBO 20”',
+  'BLOCK CARBON JUMBO 10”',
+])
+
+export const products = catalogProducts.filter(
+  (product) => !hiddenRepeatedImageVariants.has(product.id),
+)
+  .filter((product) => !retiredUvProductIds.has(product.id))
+  .filter((product) => !retiredProductNames.has(product.name))
+  .concat([
+    {
+      id: '1118',
+      name: '6W-55W UV WATER STERILIZER LAMPS',
+      category: 'Water Treatment',
+      family: 'UV Sterilization',
+    },
+    {
+      id: '1119',
+      name: '6W-55W UV WATER STERILIZERS',
+      category: 'Water Treatment',
+      family: 'UV Sterilization',
+    },
+    {
+      id: '1120',
+      name: '2PIN 6W-55W UV WATER STERILIZER LAMPS',
+      category: 'Water Treatment',
+      family: 'UV Sterilization',
+    },
+    {
+      id: '1121',
+      name: '80W UV WATER STERILIZER',
+      category: 'Water Treatment',
+      family: 'UV Sterilization',
+    },
+    {
+      id: '1291',
+      name: 'BRINE TANKS',
+      category: 'Water Treatment',
+      family: 'Complete Systems & Tanks',
+    },
+    {
+      id: '1292',
+      name: 'CHEMICAL DOSING PUMP',
+      category: 'Water Treatment',
+      family: 'Pumps & Controls',
+    },
+    {
+      id: '1293',
+      name: 'PLASTIC RO PRESSURE TANK',
+      category: 'Water Treatment',
+      family: 'Complete Systems & Tanks',
+    },
+    {
+      id: '1294',
+      name: 'PNEUMATIC FITTINGS',
+      category: 'Water Treatment',
+      family: 'Fittings & Accessories',
+    },
+    {
+      id: '1295',
+      name: 'PRE FILTER',
+      category: 'Water Treatment',
+      family: 'Filter Housings',
+    },
+    {
+      id: '1296',
+      name: 'PRESSURE RELIEF VALVES',
+      category: 'Water Treatment',
+      family: 'Fittings & Accessories',
+    },
+    {
+      id: '1297',
+      name: 'RO PNEUMATIC FLEX TUBES',
+      category: 'Water Treatment',
+      family: 'Fittings & Accessories',
+    },
+    {
+      id: '1298',
+      name: 'SOLENOID VALVE',
+      category: 'Water Treatment',
+      family: 'Fittings & Accessories',
+    },
+    {
+      id: '1299',
+      name: 'STAINLESS PRESSURE TANKS',
+      category: 'Water Treatment',
+      family: 'Complete Systems & Tanks',
+    },
+    {
+      id: '1300',
+      name: 'VFD SILENT BOOSTER PUMP',
+      category: 'Water Treatment',
+      family: 'Pumps & Controls',
+    },
+    {
+      id: '1301',
+      name: 'WATER DIVERTER VALVES',
+      category: 'Water Treatment',
+      family: 'Fittings & Accessories',
+    },
+    {
+      id: '1302',
+      name: 'HEAT PUMPS 80L, 200L & 275L',
+      category: 'Solar Water Heaters',
+      family: 'Complete Systems & Tanks',
+    },
+    {
+      id: '1303',
+      name: '58MM 1.5KW IMMERSION HEATING ELEMENT',
+      category: 'Solar Water Heaters',
+      family: 'Heating Elements',
+    },
+  ])
